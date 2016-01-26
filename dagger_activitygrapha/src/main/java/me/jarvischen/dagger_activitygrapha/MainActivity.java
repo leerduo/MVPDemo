@@ -1,4 +1,4 @@
-package me.jarvischen.dagger;
+package me.jarvischen.dagger_activitygrapha;
 
 import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +14,10 @@ public class MainActivity extends MyBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //After the  super.onCreate(...) call returns we are guranteed our injections are available
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().add(android.R.id.content, MyFragment.newInstance())
+                    .commit();
+        }
     }
 }
